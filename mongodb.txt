@@ -1,0 +1,603 @@
+Design database for Zen class programme
+users
+codekata
+attendance
+topics
+tasks
+company_drives
+mentors
+
+
+Find all the topics and tasks which are thought in the month of October
+Find all the company drives which appeared between 15 oct-2020 and 31-oct-2020
+Find all the company drives and students who are appeared for the placement.
+Find the number of problems solved by the user in codekata
+Find all the mentors with who has the mentee's count more than 15
+Find the number of users who are absent and task is not submitted  between 15 oct-2020 and 31-oct-2020
+
+
+use users                  //enterS users collection 
+db.users.insertMany([
+    {
+        name:"user1",
+email : "xyz.gmail.com" ,
+ phoneno : 128989830 ,
+  address : "xyz"
+  },
+  {
+    name:"user2",
+  email:"pqr.gmail.com",
+  phoneno:89309237,
+  address:"pqr"
+  },
+  {
+    name:"user3",
+    email:"abc.gmail.com",
+    phoneno:7942808573,
+    address:"abc"
+  },
+  {
+    name:"user4",
+    email:"qwe.gmail.com",
+    phoneno:8201884787,
+    address:"qwe"
+  },
+  {
+    name:"user5",
+    email:"stu.gmail.com",
+    phoneno:839280847,
+    address:"stu"
+  }
+  ]) //inserts five documents inside users collection
+
+ 
+
+  db.codekata.insertMany([
+    {
+        _id :   ObjectId("62d91d98ef6aa48dd5ee3e1d"),
+        no_of_problems_completed : 10
+  },
+  {
+        _id :   ObjectId("62d91d98ef6aa48dd5ee3e1e"),
+        no_of_problems_completed : 10
+  },
+  {
+    _id :  ObjectId("62d91d98ef6aa48dd5ee3e1f"),
+       no_of_problems_completed : 200
+  },
+  {
+    _id :  ObjectId("62d91d98ef6aa48dd5ee3e20"),
+       no_of_problems_completed : 100
+  },
+  {
+     _id:  ObjectId("62d91d98ef6aa48dd5ee3e21"),
+     no_of_problems_completed:400
+  }
+  ])
+
+ 
+
+  db.attendance.insertMany([
+    {
+         _id :  ObjectId("62d91d98ef6aa48dd5ee3e1d"),
+         present_days : ["15-oct-2020","16-oct-2020","17-oct-2020","18-oct-2020","19-oct-2020","20-oct-2020","21-oct-2020","22-oct-2020","23-oct-2020","24-oct-2020","25-oct-2020","26-oct-2020","27-oct-2020","28-oct-2020","29-oct-2020","30-oct-2020","31-oct-2020"],
+         attendance : "60%"
+
+  },
+  {
+         _id :ObjectId("62d91d98ef6aa48dd5ee3e1e") ,
+         present_days : ["15-oct-2020","17-oct-2020","18-oct-2020","19-oct-2020","20-oct-2020","21-oct-2020","22-oct-2020","23-oct-2020","24-oct-2020","25-oct-2020","26-oct-2020","27-oct-2020","28-oct-2020","29-oct-2020","30-oct-2020","31-oct-2020"],
+         attendance : "90%"
+
+  },
+  {
+         _id :   ObjectId("62d91d98ef6aa48dd5ee3e1f"),
+         present_days : ["15-oct-2020","16-oct-2020","17-oct-2020","18-oct-2020","19-oct-2020","20-oct-2020","21-oct-2020","22-oct-2020","23-oct-2020","24-oct-2020","27-oct-2020","28-oct-2020","29-oct-2020","30-oct-2020","31-oct-2020"],
+         attendance : "100%"
+
+  },
+   {
+         _id :   ObjectId("62d91d98ef6aa48dd5ee3e20") ,
+         present_days : ["15-oct-2020","16-oct-2020","17-oct-2020","18-oct-2020","19-oct-2020","20-oct-2020","21-oct-2020","22-oct-2020","23-oct-2020","24-oct-2020","25-oct-2020","26-oct-2020","27-oct-2020","28-oct-2020","29-oct-2020","30-oct-2020","31-oct-2020"],
+         attendance : "50%"
+
+  },
+  {
+     _id: ObjectId("62d91d98ef6aa48dd5ee3e21"),
+     present_days : ["15-oct-2020","16-oct-2020","17-oct-2020","18-oct-2020","19-oct-2020","20-oct-2020","21-oct-2020","22-oct-2020","23-oct-2020","24-oct-2020","25-oct-2020","26-oct-2020","27-oct-2020","28-oct-2020"],
+     attendance:"80%"
+  }
+  ])
+
+
+  db.topics.insertMany([
+     {
+topic_name : "components",
+present_students : [  ObjectId("62d91d98ef6aa48dd5ee3e1d"),ObjectId("62d91d98ef6aa48dd5ee3e1e"),ObjectId("62d91d98ef6aa48dd5ee3e1f") ],
+absent_students : [ ObjectId("62d91d98ef6aa48dd5ee3e20"),ObjectId("62d91d98ef6aa48dd5ee3e21")],
+date : new ISODate("2020-09-20T14:10:30Z")
+  }
+  ,
+  {
+topic_name : "useState",
+present_students : [  ObjectId("62d91d98ef6aa48dd5ee3e1f"),ObjectId("62d91d98ef6aa48dd5ee3e20"), ObjectId("62d91d98ef6aa48dd5ee3e21")],
+absent_students : [ObjectId("62d91d98ef6aa48dd5ee3e1d"),ObjectId("62d91d98ef6aa48dd5ee3e1e")],
+date :  new ISODate("2020-10-11T14:10:30Z")
+  },
+  {
+topic_name : "useParam",
+present_students : [ObjectId("62d91d98ef6aa48dd5ee3e1e"),ObjectId("62d91d98ef6aa48dd5ee3e1f")],
+absent_students:[ObjectId("62d91d98ef6aa48dd5ee3e1d"),ObjectId("62d91d98ef6aa48dd5ee3e20"), ObjectId("62d91d98ef6aa48dd5ee3e21")],
+date :new ISODate("2020-10-12T14:10:30Z")
+  },
+  {
+    topic_name : "useEffect",
+present_students : [ObjectId("62d91d98ef6aa48dd5ee3e1f"), ObjectId("62d91d98ef6aa48dd5ee3e1d")],
+absent_students : [ObjectId("62d91d98ef6aa48dd5ee3e1e"), ObjectId("62d91d98ef6aa48dd5ee3e20"), ObjectId("62d91d98ef6aa48dd5ee3e21")],
+date :new ISODate("2020-10-15T14:10:30Z")
+ 
+  },
+  {
+    topic_name:"axios",
+    present_students :[ObjectId("62d91d98ef6aa48dd5ee3e1e"),ObjectId("62d91d98ef6aa48dd5ee3e21")],
+    absent_students : [ObjectId("62d91d98ef6aa48dd5ee3e1d"),ObjectId("62d91d98ef6aa48dd5ee3e1f"),ObjectId("62d91d98ef6aa48dd5ee3e20"),],
+    date :new ISODate("2020-09-18T14:10:30Z")
+  }])
+
+
+
+
+db.tasks.insertMany([
+{
+  topic : "components",
+  task_name:"create a component container to display a div" , 
+  completed_students :[ObjectId("62d91d98ef6aa48dd5ee3e1d"),ObjectId("62d91d98ef6aa48dd5ee3e1e")],
+  not_completed_students : [ ObjectId("62d91d98ef6aa48dd5ee3e1f"),ObjectId("62d91d98ef6aa48dd5ee3e20"),ObjectId("62d91d98ef6aa48dd5ee3e21")],
+  
+},
+{
+  topic : "useState",
+  task_name:"change the price of a product using useState",
+  completed_students :[ObjectId("62d91d98ef6aa48dd5ee3e1f"),ObjectId("62d91d98ef6aa48dd5ee3e20"),ObjectId("62d91d98ef6aa48dd5ee3e1e")] , 
+  not_completed_students:[ObjectId("62d91d98ef6aa48dd5ee3e21"), ObjectId("62d91d98ef6aa48dd5ee3e1d")]
+},
+{
+    topic:"useParam",
+    task_name:"display various parameters from useParams",
+     completed_students :[ ObjectId("62d91d98ef6aa48dd5ee3e20")],
+     not_completed_students : [ObjectId("62d91d98ef6aa48dd5ee3e1d"), ObjectId("62d91d98ef6aa48dd5ee3e1e"), ObjectId("62d91d98ef6aa48dd5ee3e1f"),ObjectId("62d91d98ef6aa48dd5ee3e21")],
+},
+{
+    topic:"useEffect",
+    task_name:"fetch an api using fetch() and call the function inside useEffect",
+    completed_students:[ObjectId("62d91d98ef6aa48dd5ee3e1e"),ObjectId("62d91d98ef6aa48dd5ee3e20")],
+    not_completed_students : [ ObjectId("62d91d98ef6aa48dd5ee3e1d"),ObjectId("62d91d98ef6aa48dd5ee3e1f"),ObjectId("62d91d98ef6aa48dd5ee3e21")],
+},
+{
+    topic:"axios",
+    task_name:"Do the previous task using axios",
+    completed_students:[ ObjectId("62d91d98ef6aa48dd5ee3e21"), ObjectId("62d91d98ef6aa48dd5ee3e1f"),ObjectId("62d91d98ef6aa48dd5ee3e1d")],
+    not_completed_students : [ObjectId("62d91d98ef6aa48dd5ee3e1e"), ObjectId("62d91d98ef6aa48dd5ee3e20")]
+}
+
+])
+
+db.company_drives.insertMany([
+    {
+        name : "Zoho",
+        attended_students : [ObjectId("62d91d98ef6aa48dd5ee3e1d"),ObjectId("62d91d98ef6aa48dd5ee3e1e")],
+        date : new ISODate("2020-10-15T14:10:30Z")
+    },
+    {
+        name : "Google",
+        attended_students :[ObjectId("62d91d98ef6aa48dd5ee3e20")],
+         date : new ISODate("2020-09-18T14:10:30Z")
+    },
+    {
+        name : "freshWorks",
+        attended_students:[ObjectId("62d91d98ef6aa48dd5ee3e1e"),ObjectId("62d91d98ef6aa48dd5ee3e20")],
+        date : new ISODate("2020-10-20T14:10:30Z")
+    },
+    {
+        name : "TCS",
+        attended_students:[ObjectId("62d91d98ef6aa48dd5ee3e21"), ObjectId("62d91d98ef6aa48dd5ee3e20")],
+        date : new ISODate("2020-10-30T14:10:30Z")
+    }
+])
+
+
+
+db.mentors.insertMany([
+    {
+        name : "mentor1",
+        class_strength : 45
+    },
+    {
+        name : "mentor2",
+        class_strength:10
+    },
+    {
+        name:"mentor3",
+        class_strength:65
+    },
+    {
+        name:"mentor4",
+        class_strength:15
+    },
+    {
+        name:"mentor5",
+        class_strength:5
+    }
+])
+
+1)Find all the topics and tasks which are thought in the month of October
+
+db.topics.aggregate([
+  {
+    '$lookup': {
+      'from': 'tasks', 
+      'localField': 'topic_name', 
+      'foreignField': 'topic', 
+      'as': 'result'
+    }
+  }, {
+    '$match': {
+      'date': {
+        '$gt': new Date('Thu, 01 Oct 2020 14:10:30 GMT')
+      }
+    }
+  }, {
+    '$match': {
+      'date': {
+        '$lt': new Date('Sat, 31 Oct 2020 14:10:30 GMT')
+      }
+    }
+  }
+])
+
+
+
+2) Find all the company drives which appeared between 15 oct-2020 and 31-oct-2020 
+
+db.company_drives.aggregate([
+  {
+    '$match': {
+      'date': {
+        '$gt': new Date('Thu, 01 Oct 2020 14:10:30 GMT')
+      }
+    }
+  }, {
+    '$match': {
+      'date': {
+        '$lt': new Date('Sat, 31 Oct 2020 14:10:30 GMT')
+      }
+    }
+  }
+])
+
+3)Find all the company drives and students who are appeared for the placement.
+db.company_drives.aggregate([
+  {
+    '$lookup': {
+      'from': 'users', 
+      'localField': 'attended_students', 
+      'foreignField': '_id', 
+      'as': 'result'
+    }
+  }
+])
+
+4)Find the number of problems solved by the user in codekata
+db.codekata.aggregate([
+  {
+    '$lookup': {
+      'from': 'users', 
+      'localField': '_id', 
+      'foreignField': '_id', 
+      'as': 'result'
+    }
+  }, {
+    '$unwind': {
+      'path': '$result'
+    }
+  }, {
+    '$project': {
+      'result': 1, 
+      '_id': 0, 
+      'no_of_problems_completed': 1
+    }
+  }
+])
+
+5) Find all the mentors with who has the mentee's count more than 15
+
+db.mentors.find({class_strength: {$gt:15}})
+
+6)Find the number of users who are absent and task is not submitted  between 15 oct-2020 and 31-oct-2020
+db.topics.aggregate([
+  {
+    '$lookup': {
+      'from': 'tasks', 
+      'localField': 'topic_name', 
+      'foreignField': 'topic', 
+      'as': 'task_status'
+    }
+  }, {
+    '$match': {
+      'date': {
+        '$gt': new Date('Thu, 01 Oct 2020 14:10:30 GMT')
+      }
+    }
+  }, {
+    '$match': {
+      'date': {
+        '$lt': new Date('Thu, 15 Oct 2020 14:10:30 GMT')
+      }
+    }
+  }, {
+    '$unwind': {
+      'path': '$task_status'
+    }
+  }, {
+    '$project': {
+      'total_absentees': {
+        '$size': '$absent_students'
+      }, 
+      'task_incomplete_students': {
+        '$size': '$task_status.not_completed_students'
+      }
+    }
+  }
+])
+
+
+
+
+
+
+
+
+
+
+
+db.products.insertMany([
+    {
+        "id": "1",
+        "product_name": "Intelligent Fresh Chips",
+        "product_price": 655.00,
+        "product_material": "Concrete",
+        "product_color": "mint green",
+        "isdelete" : "false" 
+    },
+    {
+        "id": "2",
+        "product_name": "Practical Fresh Sausages",
+        "product_price": 911.0,
+        "product_material": "Cotton",
+        "product_color": "indigo",
+        "isdelete" : "false"
+    },
+    {
+        "id": "3",
+        "product_name": "Refined Steel Car",
+        "product_price": 690.00,
+        "product_material": "Rubber",
+        "product_color": "gold",
+        "isdelete" : "false"
+    },
+    {
+        "id": "4",
+        "product_name": "Gorgeous Plastic Pants",
+        "product_price": 492.00,
+        "product_material": "Soft",
+        "product_color": "plum",
+        "isdelete" : "false"
+    },
+    {
+        "id": "5",
+        "product_name": "Sleek Cotton Chair",
+        "product_price": 33.00,
+        "product_material": "Fresh",
+        "product_color": "black",
+        "isdelete" : "false"
+    },
+    {
+        "id": "6",
+        "product_name": "Awesome Wooden Towels",
+        "product_price": 474.00,
+        "product_material": "Plastic",
+        "product_color": "orange",
+        "isdelete" : "false"
+    },
+    {
+        "id": "7",
+        "product_name": "Practical Soft Shoes",
+        "product_price": 500.00,
+        "product_material": "Rubber",
+        "product_color": "pink",
+        "isdelete" : "false"
+    },
+    {
+        "id": "8",
+        "product_name": "Incredible Steel Hat",
+        "product_price": 78.00,
+        "product_material": "Rubber",
+        "product_color": "violet",
+        "isdelete" : "false"
+    },
+    {
+        "id": "9",
+        "product_name": "Awesome Wooden Ball",
+        "product_price": 28.00,
+        "product_material": "Soft",
+        "product_color": "azure",
+        "isdelete" : "false"
+    },
+    {
+        "id": "10",
+        "product_name": "Generic Wooden Pizza",
+        "product_price": 84.00,
+        "product_material": "Frozen",
+        "product_color": "indigo",
+        "isdelete" : "false"
+    },
+    {
+        "id": "11",
+        "product_name": "Unbranded Wooden Cheese",
+        "product_price":26.00,
+        "product_material": "Soft",
+        "product_color": "black",
+        "isdelete" : "false"
+    },
+    {
+        "id": "12",
+        "product_name": "Unbranded Plastic Salad",
+        "product_price": 89.00,
+        "product_material": "Wooden",
+        "product_color": "pink",
+        "isdelete" : "false"
+    },
+    {
+        "id": "13",
+        "product_name": "Gorgeous Cotton Keyboard",
+        "product_price": 37.00,
+        "product_material": "Concrete",
+        "product_color": "sky blue",
+        "isdelete" : "false"
+    },
+    {
+        "id": "14",
+        "product_name": "Incredible Steel Shirt",
+        "product_price": 54.00,
+        "product_material": "Metal",
+        "product_color": "white",
+        "isdelete" : "false"
+    },
+    {
+        "id": "15",
+        "product_name": "Ergonomic Cotton Hat",
+        "product_price": 43.00,
+        "product_material": "Rubber",
+        "product_color": "mint green",
+        "isdelete" : "false"
+    },
+    {
+        "id": "16",
+        "product_name": "Small Soft Chair",
+        "product_price": 47.00,
+        "product_material": "Cotton",
+        "product_color": "teal",
+        "isdelete" : "false"
+    },
+    {
+        "id": "17",
+        "product_name": "Incredible Metal Car",
+        "product_price":36.00,
+        "product_material": "Fresh",
+        "product_color": "indigo",
+        "isdelete" : "false"
+    },
+    {
+        "id": "18",
+        "product_name": "Licensed Plastic Bacon",
+        "product_price":88.00,
+        "product_material": "Steel",
+        "product_color": "yellow",
+        "isdelete" : "false"
+    },
+    {
+        "id": "19",
+        "product_name": "Intelligent Cotton Chips",
+        "product_price": 46.00,
+        "product_material": "Soft",
+        "product_color": "azure",
+        "isdelete" : "false"
+    },
+    {
+        "id": "20",
+        "product_name": "Handcrafted Wooden Bacon",
+        "product_price": 36.00,
+        "product_material": "Concrete",
+        "product_color": "lime",
+        "isdelete" : "false"
+    },
+    {
+        "id": "21",
+        "product_name": "Unbranded Granite Chicken",
+        "product_price": 90.00,
+        "product_material": "Metal",
+        "product_color": "gold",
+        "isdelete" : "false"
+    },
+    {
+        "id": "22",
+        "product_name": "Ergonomic Soft Hat",
+        "product_price": 99.00,
+        "product_material": "Rubber",
+        "product_color": "black",
+        "isdelete" : "false"
+    },
+    {
+        "id": "23",
+        "product_name": "Intelligent Steel Pizza",
+        "product_price": 95.00,
+        "product_material": "Cotton",
+        "product_color": "azure",
+        "isdelete" : "false"
+    },
+    {
+        "id": "24",
+        "product_name": "Tasty Rubber Cheese",
+        "product_price":47.00,
+        "product_material": "Frozen",
+        "product_color": "orchid",
+        "isdelete" : "false"
+    },
+    {
+        "id": "25",
+        "product_name": "Licensed Steel Car",
+        "product_price":20.00,
+        "product_material": "Cotton",
+        "product_color": "indigo",
+        "isdelete" : "false"
+    }
+])
+
+
+1)Find all the information about each products
+db.products.find({},{"_id":0})
+
+2)Find the product price which are between 400 to 800
+db.products.find({$and:[{product_price:{$gt:400}},{product_price:{$lt:800}}]})
+
+3)Find the product price which are not between 400 to 600
+db.products.find({product_price:{$ne:[{$and:[{product_price:{$gt:400}},{product_price:{$lt:800}}]}]}}) //doubt
+
+4)List the four product which are grater than 500 in price 
+db.products.find({product_price:{$gt:500}})
+
+5)Find the product name and product material of each products
+db.products.find({},{"product_name":1,"product_material":1,"_id":0})
+
+6)Find the product with a row id of 10
+db.products.findOne({id:"10"})
+
+7)Find only the product name and product material
+db.products.find({},{"product_name":1,"product_material":1 , "_id":0})
+
+8)Find all products which contain the value of soft in product material 
+db.products.find({product_material:"Soft"})
+
+9)Find products which contain product color indigo  and product price 492.00
+db.products.find({$or:[{product_color:"indigo"},{product_price:492.00}]})
+
+10)Delete the products which product price value are same
+
+db.products_db.find({},{ product_price: 1}).sort({ _id: 1 }).forEach(function(p) {
+    db.products_db.remove({
+        _id: {  $gt : p._id },
+        "product_price": p.product_price
+    })
+})
+
+
